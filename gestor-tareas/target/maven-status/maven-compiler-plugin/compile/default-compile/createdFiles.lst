@@ -1,0 +1,6 @@
+com/gestor/tareas/model/Tarea.class
+com/gestor/tareas/GestorTareasApplication.class
+com/gestor/tareas/repository/TareaRepository.class
+com/gestor/tareas/App.class
+com/gestor/tareas/service/TareaService.class
+com/gestor/tareas/controller/TareaController.class
