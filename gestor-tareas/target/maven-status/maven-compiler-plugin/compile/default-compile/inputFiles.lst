@@ -1,7 +1,13 @@
-/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/config/WebConfig.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/repository/UsuarioRepository.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/App.java
-/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/repository/TareaRepository.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/model/Usuario.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/controller/TareaController.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/model/Tarea.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/controller/UsuarioController.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/config/WebConfig.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/service/CustomUserDetailsService.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/config/SecurityConfig.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/repository/TareaRepository.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/service/TareaService.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/GestorTareasApplication.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/service/UsuarioService.java

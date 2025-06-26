@@ -29,7 +29,7 @@ public class TareaController {
     public ResponseEntity<Tarea> crearTarea(@Valid @RequestBody Tarea tarea) {
         // @RequestBody → convierte el JSON del cuerpo en un objeto Tarea
         // @Valid → valida los campos con anotaciones como @NotBlank
-        Tarea nueva = tareaService.guardar(tarea);
+        Tarea nueva = tareaService.guardarTarea(tarea);
         return new ResponseEntity<>(nueva, HttpStatus.CREATED); // 201 Created
     }
 

@@ -1,8 +1,14 @@
 com/gestor/tareas/model/Tarea.class
+com/gestor/tareas/service/TareaService.class
+com/gestor/tareas/config/WebConfig.class
+com/gestor/tareas/service/UsuarioService.class
+com/gestor/tareas/model/Usuario.class
 com/gestor/tareas/GestorTareasApplication.class
 com/gestor/tareas/repository/TareaRepository.class
 com/gestor/tareas/config/WebConfig$1.class
-com/gestor/tareas/service/TareaService.class
-com/gestor/tareas/config/WebConfig.class
+com/gestor/tareas/controller/UsuarioController.class
+com/gestor/tareas/repository/UsuarioRepository.class
+com/gestor/tareas/service/CustomUserDetailsService.class
+com/gestor/tareas/config/SecurityConfig.class
 com/gestor/tareas/App.class
 com/gestor/tareas/controller/TareaController.class

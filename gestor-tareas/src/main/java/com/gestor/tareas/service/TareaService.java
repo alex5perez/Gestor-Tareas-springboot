@@ -1,8 +1,13 @@
 package com.gestor.tareas.service;
 
 import com.gestor.tareas.model.Tarea;
+import com.gestor.tareas.model.Usuario;
+import com.gestor.tareas.service.UsuarioService;
 import com.gestor.tareas.repository.TareaRepository;
+
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
@@ -10,10 +15,12 @@ import java.util.List;
 public class TareaService {
 
     private final TareaRepository tareaRepository;
+    private final UsuarioService usuarioService;
 
     // Inyección de dependencias del repositorio
-    public TareaService(TareaRepository tareaRepository) {
+    public TareaService(TareaRepository tareaRepository, UsuarioService usuarioService) {
         this.tareaRepository = tareaRepository;
+        this.usuarioService = usuarioService;
     }
 
     // Devuelve todas las tareas desde la base de datos
@@ -22,7 +29,10 @@ public class TareaService {
     }
 
     // Guarda una nueva tarea en la base de datos
-    public Tarea guardar(Tarea tarea) {
+    public Tarea guardarTarea(Tarea tarea) {
+        String username = getCurrentUsername();
+        Usuario usuario = usuarioService.buscarPorUsername(username);
+        tarea.setUsuario(usuario);
         return tareaRepository.save(tarea);
     }
 
@@ -55,6 +65,11 @@ public class TareaService {
         Usuario usuario = usuarioService.buscarPorId(usuarioId);
         tarea.setUsuario(usuario);
         return tareaRepository.save(tarea);
+    }
+
+    private String getCurrentUsername() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
     }
 
 }
