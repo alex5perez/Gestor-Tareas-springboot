@@ -3,6 +3,8 @@
 A simple yet scalable REST API to manage tasks, built with Java and Spring Boot.  
 This project is designed to demonstrate a clean architecture with users, tasks, and API documentation via Swagger.
 
+📄 Disponible también en [español](README.es.md)
+
 ![Java](https://img.shields.io/badge/java-17-blue.svg)
 ![Spring Boot](https://img.shields.io/badge/spring--boot-3.2-brightgreen.svg)
 ![Build](https://img.shields.io/badge/build-passing-success)
