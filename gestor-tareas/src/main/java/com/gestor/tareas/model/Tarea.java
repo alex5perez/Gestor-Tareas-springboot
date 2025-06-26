@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity // Marca esta clase como una entidad de JPA (se convierte en una tabla)
-@Data   // Lombok: genera automáticamente getters, setters, toString, equals, hashCode
+@Data // Lombok: genera automáticamente getters, setters, toString, equals, hashCode
 public class Tarea {
 
     @Id // Define el campo como clave primaria
@@ -18,4 +18,9 @@ public class Tarea {
     private String descripcion;
 
     private boolean completada = false; // Por defecto, la tarea no está completada
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
 }

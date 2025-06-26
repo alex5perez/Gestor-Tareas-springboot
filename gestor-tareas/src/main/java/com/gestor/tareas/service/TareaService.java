@@ -44,4 +44,17 @@ public class TareaService {
         tareaRepository.deleteById(id);
     }
 
+    // Nuevo método
+    public List<Tarea> obtenerPorUsuario(Long usuarioId) {
+        Usuario usuario = usuarioService.buscarPorId(usuarioId);
+        return usuario.getTareas();
+    }
+
+    // Guardar y asociar
+    public Tarea guardarParaUsuario(Long usuarioId, Tarea tarea) {
+        Usuario usuario = usuarioService.buscarPorId(usuarioId);
+        tarea.setUsuario(usuario);
+        return tareaRepository.save(tarea);
+    }
+
 }
