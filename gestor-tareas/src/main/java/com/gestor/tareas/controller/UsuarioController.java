@@ -32,7 +32,7 @@ public class UsuarioController {
     // POST /api/usuarios
     @PostMapping
     public ResponseEntity<Usuario> crearUsuario(@Valid @RequestBody Usuario usuario) {
-        return new ResponseEntity<>(usuarioService.crear(usuario), HttpStatus.CREATED);
+        return new ResponseEntity<>(usuarioService.crearUsuario(usuario), HttpStatus.CREATED);
     }
 
     // GET /api/usuarios/{id}/tareas
