@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AuthForm.module.css";
+import.meta.env.VITE_API_URL
 
 function LoginForm({ onLogin, switchToRegister }) {
   const [form, setForm] = useState({ username: "", password: "" });

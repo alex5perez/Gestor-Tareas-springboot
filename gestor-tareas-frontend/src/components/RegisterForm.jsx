@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AuthForm.module.css";
 
-function RegisterForm({ switchToLogin }) {
+function RegisterForm() {
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     nombre: "",
     email: "",
@@ -12,24 +13,32 @@ function RegisterForm({ switchToLogin }) {
   });
   const [error, setError] = useState(null);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null); // limpia errores anteriores
+
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/usuarios`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/usuarios`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
 
       if (res.ok) {
-        alert("Usuario registrado correctamente.");
-        switchToLogin();
+        alert("✅ Usuario registrado correctamente.");
+        navigate("/login");          // ←  redirige a /login
       } else {
-        setError("No se pudo registrar el usuario.");
+        const text = await res.text();
+        setError(`Error ${res.status}: ${text || "No se pudo registrar"}`);
       }
-    } catch {
+    } catch (err) {
+      console.error(err);
       setError("Error de conexión.");
     }
   };

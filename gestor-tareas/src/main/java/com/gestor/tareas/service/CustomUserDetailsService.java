@@ -5,8 +5,7 @@ import com.gestor.tareas.repository.UsuarioRepository;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
+import java.util.List;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -20,12 +19,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByUsername(username)
-            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         return new User(
             usuario.getUsername(),
-            "{noop}" + usuario.getPassword(),
-            Collections.singletonList(new SimpleGrantedAuthority("USER"))
+            usuario.getPassword(),
+            List.of(new SimpleGrantedAuthority("ROLE_USER"))
         );
     }
 }
