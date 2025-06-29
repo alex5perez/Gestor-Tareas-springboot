@@ -14,7 +14,7 @@ function LoginForm({ onLogin, switchToRegister }) {
     const auth = "Basic " + btoa(`${form.username}:${form.password}`);
 
     try {
-      const res = await fetch("http://localhost:8080/api/tareas", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tareas`, {
         headers: { Authorization: auth },
       });
 
