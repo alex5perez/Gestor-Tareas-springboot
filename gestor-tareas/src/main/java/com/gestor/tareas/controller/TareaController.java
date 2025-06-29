@@ -35,13 +35,13 @@ public class TareaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Tarea> actualizarTarea(@PathVariable Long id, @Valid @RequestBody Tarea tareaActualizada) {
-        Tarea actual = tareaService.actualizar(id, tareaActualizada);
+        Tarea actual = tareaService.actualizarTarea(id, tareaActualizada);
         return ResponseEntity.ok(actual);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarTarea(@PathVariable Long id) {
-        tareaService.eliminar(id);
+        tareaService.eliminarTarea(id);
         return ResponseEntity.noContent().build(); // HTTP 204
     }
 

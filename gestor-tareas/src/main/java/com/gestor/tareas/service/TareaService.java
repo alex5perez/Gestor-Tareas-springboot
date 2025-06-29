@@ -4,10 +4,13 @@ import com.gestor.tareas.model.Tarea;
 import com.gestor.tareas.model.Usuario;
 import com.gestor.tareas.service.UsuarioService;
 import com.gestor.tareas.repository.TareaRepository;
+import com.gestor.tareas.exception.UnauthorizedAccessException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -36,22 +39,34 @@ public class TareaService {
         return tareaRepository.save(tarea);
     }
 
-    public Tarea actualizar(Long id, Tarea tareaActualizada) {
+    public Tarea actualizarTarea(Long id, Tarea nuevaTarea) {
         Tarea tarea = tareaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
 
-        tarea.setTitulo(tareaActualizada.getTitulo());
-        tarea.setDescripcion(tareaActualizada.getDescripcion());
-        tarea.setCompletada(tareaActualizada.isCompletada());
+        validarPropietario(tarea);
 
+        tarea.setTitulo(nuevaTarea.getTitulo());
+        tarea.setDescripcion(nuevaTarea.getDescripcion());
+        tarea.setCompletada(nuevaTarea.isCompletada());
         return tareaRepository.save(tarea);
     }
 
-    public void eliminar(Long id) {
-        if (!tareaRepository.existsById(id)) {
-            throw new RuntimeException("Tarea no encontrada");
+    public void eliminarTarea(Long id) {
+        Tarea tarea = tareaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
+
+        validarPropietario(tarea);
+
+        tareaRepository.delete(tarea);
+    }
+
+    private void validarPropietario(Tarea tarea) {
+        String currentUsername = getCurrentUsername();
+        String ownerUsername = tarea.getUsuario().getUsername();
+
+        if (!currentUsername.equals(ownerUsername)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tienes permiso para modificar esta tarea");
         }
-        tareaRepository.deleteById(id);
     }
 
     // Nuevo método
