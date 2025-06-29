@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AuthForm.module.css";
 
 function LoginForm({ onLogin, switchToRegister }) {
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -31,6 +33,7 @@ function LoginForm({ onLogin, switchToRegister }) {
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2>Iniciar sesión</h2>
+
         <label>
           Usuario:
           <input
@@ -42,6 +45,7 @@ function LoginForm({ onLogin, switchToRegister }) {
             required
           />
         </label>
+
         <label>
           Contraseña:
           <input
@@ -53,10 +57,19 @@ function LoginForm({ onLogin, switchToRegister }) {
             required
           />
         </label>
-        <button className={styles.button} type="submit">Entrar</button>
-        <button type="button" className={styles.toggle} onClick={switchToRegister}>
-          ¿No tienes cuenta? Regístrate
+
+        <button className={styles.button} type="submit">
+          Entrar
         </button>
+
+        <button
+          type="button"
+          className={styles.toggle}
+          onClick={() => navigate("/register")}
+        >
+          ¿No tienes cuenta? Regístrate
+        </button>
+
         {error && <p className={styles.error}>{error}</p>}
       </form>
     </div>
