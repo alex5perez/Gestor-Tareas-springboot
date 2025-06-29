@@ -3,6 +3,8 @@ package com.gestor.tareas.config;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.*;
+import io.swagger.v3.oas.models.Components; 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
