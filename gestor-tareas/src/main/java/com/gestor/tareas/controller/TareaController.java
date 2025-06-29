@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import java.util.List;
 
+@SecurityRequirement(name = "basicAuth")
 @RestController // Indica que esta clase es un controlador REST
 @RequestMapping("/api/tareas") // Ruta base para todos los endpoints de esta clase
 public class TareaController {

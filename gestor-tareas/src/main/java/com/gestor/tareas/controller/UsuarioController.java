@@ -36,12 +36,14 @@ public class UsuarioController {
     }
 
     // GET /api/usuarios/{id}/tareas
+    @SecurityRequirement(name = "basicAuth")
     @GetMapping("/{id}/tareas")
     public List<Tarea> tareasPorUsuario(@PathVariable Long id) {
         return tareaService.obtenerPorUsuario(id);
     }
 
     // POST /api/usuarios/{id}/tareas
+    @SecurityRequirement(name = "basicAuth")
     @PostMapping("/{id}/tareas")
     public ResponseEntity<Tarea> crearTareaParaUsuario(
             @PathVariable Long id,
