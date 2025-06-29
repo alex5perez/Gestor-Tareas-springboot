@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from "./LoginForm.module.css";
+
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,32 +33,40 @@ function LoginForm({ onLogin }) {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "2rem auto" }}>
+  <div className={styles.wrapper}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Usuario:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Entrar</button>
-      </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
-  );
+
+      <label>
+        Usuario:
+        <input
+          className={styles.input}
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Contraseña:
+        <input
+          className={styles.input}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+
+      <button type="submit" className={styles.button}>Entrar</button>
+
+      {error && <p className={styles.error}>{error}</p>}
+    </form>
+  </div>
+);
+
+
 }
 
 export default LoginForm;
