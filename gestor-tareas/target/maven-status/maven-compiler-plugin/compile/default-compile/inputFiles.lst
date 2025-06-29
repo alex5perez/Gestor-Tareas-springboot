@@ -10,6 +10,7 @@
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/config/SecurityConfig.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/exception/UnauthorizedAccessException.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/repository/TareaRepository.java
+/workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/config/OpenApiConfig.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/service/TareaService.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/GestorTareasApplication.java
 /workspaces/gestor-tareas-springboot/gestor-tareas/src/main/java/com/gestor/tareas/service/UsuarioService.java
