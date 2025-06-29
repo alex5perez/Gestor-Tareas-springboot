@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 function App() {
   const [userData, setUserData] = useState(null);
+  const [view, setView] = useState("login");
 
-  // Leer del sessionStorage al cargar
   useEffect(() => {
     const stored = sessionStorage.getItem("authData");
     if (stored) {
-      const parsed = JSON.parse(stored);
-      setUserData(parsed);
+      setUserData(JSON.parse(stored));
     }
   }, []);
 
@@ -21,18 +21,21 @@ function App() {
   const handleLogout = () => {
     sessionStorage.removeItem("authData");
     setUserData(null);
+    setView("login");
   };
 
   return (
     <div>
       {!userData ? (
-        <LoginForm onLogin={handleLogin} />
+        view === "login" ? (
+          <LoginForm onLogin={handleLogin} switchToRegister={() => setView("register")} />
+        ) : (
+          <RegisterForm switchToLogin={() => setView("login")} />
+        )
       ) : (
         <div style={{ padding: "2rem" }}>
           <h2>Bienvenido, {userData.username}</h2>
-          <button onClick={handleLogout} style={{ marginBottom: "1rem" }}>
-            Cerrar sesión
-          </button>
+          <button onClick={handleLogout}>Cerrar sesión</button>
           <h3>Tus tareas:</h3>
           <ul>
             {userData.tareas.map((tarea) => (
