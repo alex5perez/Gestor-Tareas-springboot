@@ -1,10 +1,11 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [userData, setUserData] = useState(null);
-  const [view, setView] = useState("login");
 
   useEffect(() => {
     const stored = sessionStorage.getItem("authData");
@@ -21,32 +22,28 @@ function App() {
   const handleLogout = () => {
     sessionStorage.removeItem("authData");
     setUserData(null);
-    setView("login");
   };
 
   return (
-    <div>
-      {!userData ? (
-        view === "login" ? (
-          <LoginForm onLogin={handleLogin} switchToRegister={() => setView("register")} />
-        ) : (
-          <RegisterForm switchToLogin={() => setView("login")} />
-        )
-      ) : (
-        <div style={{ padding: "2rem" }}>
-          <h2>Bienvenido, {userData.username}</h2>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-          <h3>Tus tareas:</h3>
-          <ul>
-            {userData.tareas.map((tarea) => (
-              <li key={tarea.id}>
-                <strong>{tarea.titulo}</strong>: {tarea.descripcion}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to={userData ? "/dashboard" : "/login"} />} />
+        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route
+          path="/dashboard"
+          element={
+            userData ? (
+              <Dashboard userData={userData} onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        {/* 404 Not Found route */}
+        <Route path="*" element={<h2>Página no encontrada</h2>} />
+      </Routes>
+    </Router>
   );
 }
 
