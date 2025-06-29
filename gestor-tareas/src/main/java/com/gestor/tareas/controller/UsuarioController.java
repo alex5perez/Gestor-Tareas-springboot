@@ -4,7 +4,10 @@ import com.gestor.tareas.model.Tarea;
 import com.gestor.tareas.model.Usuario;
 import com.gestor.tareas.service.TareaService;
 import com.gestor.tareas.service.UsuarioService;
+
 import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
