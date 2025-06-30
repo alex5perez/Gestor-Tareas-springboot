@@ -49,3 +49,36 @@
   background: #c73838;
 }
 
+.editBtn {
+  background: #ffc107;
+  border: none;
+  color: #000;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editInput,
+.editTextarea {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+}
+
+.saveBtn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.cancelBtn {
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
