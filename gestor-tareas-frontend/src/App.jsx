@@ -34,7 +34,11 @@ function App() {
           path="/dashboard"
           element={
             userData ? (
-              <Dashboard userData={userData} onLogout={handleLogout} />
+              <Dashboard
+                userData={userData}
+                setUserData={setUserData}
+                onLogout={handleLogout}
+              />
             ) : (
               <Navigate to="/login" />
             )

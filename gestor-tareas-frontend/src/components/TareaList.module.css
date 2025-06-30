@@ -1,0 +1,32 @@
+.listContainer {
+  padding: 1.5rem;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.tareaList {
+  list-style: none;
+  padding: 0;
+}
+
+.tareaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.completada {
+  color: green;
+  font-weight: bold;
+}
+
+.pendiente {
+  color: orange;
+  font-weight: bold;
+}
