@@ -22,6 +22,7 @@ function LoginForm({ onLogin, switchToRegister }) {
       if (res.ok) {
         const tareas = await res.json();
         onLogin({ ...form, tareas });
+        navigate("/dashboard");
       } else {
         setError("Credenciales incorrectas");
       }

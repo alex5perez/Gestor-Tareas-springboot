@@ -17,7 +17,7 @@ function TareaForm({ userData, onTareaCreada }) {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/usuarios/${userData.id}/tareas`,
+        `${import.meta.env.VITE_API_URL}/api/tareas`,
         {
           method: "POST",
           headers: {
@@ -42,28 +42,36 @@ function TareaForm({ userData, onTareaCreada }) {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h3>Crear nueva tarea</h3>
-      <input
-        className={styles.input}
-        type="text"
-        name="titulo"
-        placeholder="Título"
-        value={form.titulo}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        className={styles.textarea}
-        name="descripcion"
-        placeholder="Descripción"
-        value={form.descripcion}
-        onChange={handleChange}
-        required
-      />
-      <button className={styles.button} type="submit">Crear</button>
-      {error && <p className={styles.error}>{error}</p>}
-    </form>
+    <div className={styles.wrapper}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h3>Crear nueva tarea</h3>
+
+        <input
+          className={styles.input}
+          type="text"
+          name="titulo"
+          placeholder="Título"
+          value={form.titulo}
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
+          className={styles.textarea}
+          name="descripcion"
+          placeholder="Descripción"
+          value={form.descripcion}
+          onChange={handleChange}
+          required
+        />
+
+        <button className={styles.button} type="submit">
+          Crear
+        </button>
+
+        {error && <p className={styles.error}>{error}</p>}
+      </form>
+    </div>
   );
 }
 
