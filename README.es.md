@@ -1,64 +1,63 @@
-# 📝 API Gestor de Tareas – Spring Boot
+# Gestor de Tareas - Spring Boot + React
 
-Una API REST sencilla pero escalable para gestionar tareas, desarrollada con Java y Spring Boot.  
-Este proyecto demuestra una arquitectura limpia con usuarios, tareas y documentación automática mediante Swagger.
+Aplicación web full-stack para la gestión de tareas. Permite a los usuarios registrarse, iniciar sesión, crear, actualizar, marcar como completadas y eliminar tareas. La autenticación se realiza con Basic Auth y los datos se almacenan en una base de datos en memoria H2.
 
-[📄 Versión en inglés](README.md)
+## 🔧 Tecnologías usadas
 
-![Java](https://img.shields.io/badge/java-17-blue.svg)
-![Spring Boot](https://img.shields.io/badge/spring--boot-3.2-brightgreen.svg)
-![Build](https://img.shields.io/badge/build-passing-success)
-![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
+- **Backend:** Spring Boot, Spring Security, H2, JPA
+- **Frontend:** React, Vite, CSS Modules
+- **Autenticación:** Autenticación básica con contraseña encriptada (BCrypt)
+- **Documentación API:** Swagger UI (OpenAPI 3)
 
----
+## ✨ Funcionalidades
 
-## 🚀 Funcionalidades
+- Registro y login con credenciales seguras
+- Crear, leer, actualizar y eliminar tareas (CRUD)
+- Marcar tareas como completadas o pendientes
+- Interfaz moderna y adaptable
+- Persistencia de sesión con `sessionStorage`
 
-- ✅ API RESTful con operaciones CRUD para tareas
-- ✅ Entidad `Usuario` con relación uno-a-muchos con `Tarea`
-- ✅ Validación de datos con `@Valid`
-- ✅ Documentación de la API con Swagger UI
-- 🔒 Autenticación con Spring Security (próximamente)
-- 🧪 Tests unitarios e integración con JUnit (próximamente)
+## 🚀 Cómo iniciar
 
----
+### Backend
 
-## 🛠 Tecnologías
-
-- Java 17  
-- Spring Boot 3.2  
-- Spring Data JPA  
-- H2 (base de datos en memoria)  
-- Swagger (Springdoc OpenAPI)  
-- Maven  
-
----
-```
-## 📂 Estructura del proyecto
-├── controller → Endpoints REST
-├── model → Entidades: Task, User
-├── repository → Interfaces Spring Data JPA
-├── service → Lógica de negocio
-└── config → CORS y configuración global
+```bash
+cd gestor-tareas-springboot
+./mvnw spring-boot:run
 ```
 
----
+App en `http://localhost:8080`
 
-## 📄 Endpoints principales
+### Frontend
 
-Todos los endpoints usan el prefijo `/api`.
+```bash
+cd gestor-tareas-frontend
+npm install
+npm run dev
+```
 
-| Endpoint                       | Método | Descripción                                  |
-|--------------------------------|--------|----------------------------------------------|
-| `/api/tareas`                  | GET    | Listar todas las tareas                      |
-| `/api/tareas/{id}`             | PUT    | Actualizar una tarea                         |
-| `/api/tareas/{id}`             | DELETE | Eliminar una tarea                           |
-| `/api/usuarios`                | POST   | Crear un nuevo usuario                       |
-| `/api/usuarios/{id}/tareas`    | POST   | Añadir una tarea a un usuario                |
-| `/api/usuarios/{id}/tareas`    | GET    | Listar todas las tareas de un usuario        |
+App en `http://localhost:5173`
 
-Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+## 🛡️ Seguridad
 
----
+- Contraseñas encriptadas con BCrypt
+- Rutas protegidas para operaciones CRUD
+- CORS configurado para desarrollo local
 
-Hecho con ❤️ por @alex5perez
+## 📁 Estructura del proyecto
+
+```
+gestor-tareas/
+├── backend/
+│   ├── controller/
+│   ├── model/
+│   ├── repository/
+│   ├── service/
+│   └── config/
+└── frontend/
+    └── components/
+```
+
+## 🖥️ Demo
+
+Puedes probarlo localmente o ver capturas en mi portfolio: [alexperezrubio.com](https://alexperezrubio.com)

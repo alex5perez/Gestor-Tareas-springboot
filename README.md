@@ -1,63 +1,63 @@
-# 📝 Task Manager API - Spring Boot
+# Task Manager - Spring Boot + React
 
-A simple yet scalable REST API to manage tasks, built with Java and Spring Boot.  
-This project is designed to demonstrate a clean architecture with users, tasks, and API documentation via Swagger.
+This is a full-stack task management application built with Spring Boot and React. Users can register, log in, create, update, mark as completed, and delete tasks. Authentication is handled with basic auth and data is persisted in an H2 in-memory database.
 
-📄 Disponible también en [español](README.es.md)
+## 🔧 Tech Stack
 
-![Java](https://img.shields.io/badge/java-17-blue.svg)
-![Spring Boot](https://img.shields.io/badge/spring--boot-3.2-brightgreen.svg)
-![Build](https://img.shields.io/badge/build-passing-success)
-![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
+- **Backend:** Spring Boot, Spring Security, H2, JPA
+- **Frontend:** React, Vite, CSS Modules
+- **Authentication:** HTTP Basic Authentication (with BCrypt)
+- **API Documentation:** Swagger UI (OpenAPI 3)
 
----
+## ✨ Features
 
-## 🚀 Features
+- Register and login with encrypted credentials
+- CRUD operations for tasks
+- Toggle task status (completed/pending)
+- Responsive and modern interface
+- Full session persistence via `sessionStorage`
 
-- ✅ RESTful API with CRUD operations for tasks
-- ✅ Entity `User` with one-to-many relation to `Task`
-- ✅ Validation with `@Valid` and custom messages
-- ✅ API Documentation with Swagger UI
-- 🔒 Authentication with Spring Security (coming soon)
-- 🧪 Unit & Integration testing with JUnit (coming soon)
+## 🚀 Getting Started
 
----
+### Backend
 
-## 🛠 Tech Stack
-
-- Java 17
-- Spring Boot 3.2
-- Spring Data JPA
-- H2 (in-memory DB)
-- Swagger (Springdoc OpenAPI)
-- Maven
-
----
-
-## 📂 Project Structure
-```
-├── controller → REST endpoints
-├── model → Entities: Task, User
-├── repository → Spring Data JPA interfaces
-├── service → Business logic
-└── config → CORS and global config
+```bash
+cd gestor-tareas-springboot
+./mvnw spring-boot:run
 ```
 
----
+App runs at `http://localhost:8080`
 
-## 📄 API Endpoints
+### Frontend
 
-All endpoints are accessible via `/api` prefix.
+```bash
+cd gestor-tareas-frontend
+npm install
+npm run dev
+```
 
-| Endpoint                   | Method | Description              |
-|---------------------------|--------|--------------------------|
-| `/api/tareas`             | GET    | List all tasks           |
-| `/api/tareas/{id}`        | PUT    | Update a task            |
-| `/api/tareas/{id}`        | DELETE | Delete a task            |
-| `/api/usuarios`           | POST   | Create new user          |
-| `/api/usuarios/{id}/tareas` | POST | Add task for a user      |
-| `/api/usuarios/{id}/tareas` | GET  | Get all tasks for user   |
+App runs at `http://localhost:5173`
 
-Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+## 🛡️ Security
 
-Made with ❤️ by @alex5perez
+- Passwords are encrypted with BCrypt
+- All protected routes require authentication
+- CORS configured for local development
+
+## 📁 Project Structure
+
+```
+gestor-tareas/
+├── backend/
+│   ├── controller/
+│   ├── model/
+│   ├── repository/
+│   ├── service/
+│   └── config/
+└── frontend/
+    └── components/
+```
+
+## 🖥️ Demo
+
+You can try it locally or see screenshots on my portfolio: [alexperezrubio.com](https://alexperezrubio.com)
