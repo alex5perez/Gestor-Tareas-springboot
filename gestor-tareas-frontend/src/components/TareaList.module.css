@@ -1,8 +1,9 @@
 .listContainer {
   padding: 1.5rem;
-  background-color: #f7f7f7;
   border-radius: 8px;
   margin-top: 1rem;
+  background: #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .tareaList {
@@ -16,7 +17,7 @@
   align-items: center;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  background-color: white;
+  background: #1e1e1e;
   border: 1px solid #ddd;
   border-radius: 6px;
 }

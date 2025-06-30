@@ -7,9 +7,6 @@ function Dashboard({ userData, setUserData, onLogout }) {
       <h2>Bienvenido, {userData.username}</h2>
       <button onClick={onLogout}>Cerrar sesión</button>
 
-      {/* Lista de tareas */}
-      <TareaList tareas={userData.tareas} />
-
       {/* Formulario para crear tarea */}
       <TareaForm
         userData={userData}
@@ -20,6 +17,10 @@ function Dashboard({ userData, setUserData, onLogout }) {
           })
         }
       />
+
+      {/* Lista de tareas */}
+      <TareaList tareas={userData.tareas} />
+      
     </div>
   );
 }
