@@ -28,8 +28,15 @@ function Dashboard({ userData, setUserData, onLogout }) {
             tareas: userData.tareas.filter((t) => t.id !== id),
           })
         }
+        onTareaEditada={(actualizada) =>
+          setUserData({
+            ...userData,
+            tareas: userData.tareas.map((t) =>
+              t.id === actualizada.id ? actualizada : t
+            ),
+          })
+        }
       />
-      
     </div>
   );
 }
