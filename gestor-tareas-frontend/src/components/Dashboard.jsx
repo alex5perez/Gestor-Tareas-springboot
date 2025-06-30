@@ -19,7 +19,16 @@ function Dashboard({ userData, setUserData, onLogout }) {
       />
 
       {/* Lista de tareas */}
-      <TareaList tareas={userData.tareas} />
+      <TareaList
+        tareas={userData.tareas}
+        userData={userData}
+        onTareaEliminada={(id) =>
+          setUserData({
+            ...userData,
+            tareas: userData.tareas.filter((t) => t.id !== id),
+          })
+        }
+      />
       
     </div>
   );

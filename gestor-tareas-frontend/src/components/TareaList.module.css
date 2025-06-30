@@ -31,3 +31,21 @@
   color: orange;
   font-weight: bold;
 }
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.deleteBtn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.deleteBtn:hover {
+  background: #c73838;
+}
+
